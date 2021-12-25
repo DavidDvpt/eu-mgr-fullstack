@@ -1,8 +1,14 @@
 FROM node:16.13-alpine3.12
 
 WORKDIR /app
-VOLUME /app
+# VOLUME /app
 
-EXPOSE 8000
+# EXPOSE 8000
 
 CMD ["npm", "run", "dev"]
+
+# WORKDIR /app
+# COPY ./package.json ./
+# RUN npm i
+# COPY . .
+# CMD ["npm", "run", "dev"]
