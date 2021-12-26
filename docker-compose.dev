@@ -6,7 +6,13 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres_password
     volumes:
-      - ./dev-db:/var/lib/postgresql
+      - ./db:/var/lib/postgresql*
+  adminer:
+    image: adminer
+    restart: always
+    depends_on: postgres
+    ports:
+      - 8080:8080
   nginx:
     container_name: nginx
     depends_on:
@@ -28,7 +34,7 @@ services:
     environment:
       - PGUSER=postgres
       - PGHOST=postgres
-      - PGDATABASE=postgres
+      - PGDATABASE=db_dev
       - PGPASSWORD=postgres_password
       - PGPORT=5432
   client:
