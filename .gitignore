@@ -1,6 +1,9 @@
 db
 server/node_modules
 server/dist
+server/.env
+
 client/node_modules
 client/.next
 client/out
+client/.env

@@ -1,23 +1,7 @@
-import Koa from 'koa';
-import json from 'koa-json';
-import logger from 'koa-logger';
-import Router from 'koa-router';
+import app from "./app";
 
+const PORT = process.env.PORT || 8000
 
-const app = new Koa();
-const router = new Router();
-
-router.get('/api', async (ctx, next)=> {
-    ctx.body = {msg: "hello world ca fonctionne même en mode dev !!!!!!"}
-
-    await next()
-})
-
-app.use(json());
-app.use(logger());
-
-app.use(router.routes()).use(router.allowedMethods())
-
-app.listen(8000, ()=> {
-    console.log("koa started")
+app.listen(PORT, ()=> {
+    console.log(`koa started on port ${PORT}`)
 });
