@@ -1,0 +1,6 @@
+db
+server/node_modules
+server/dist
+client/node_modules
+client/.next
+client/out
