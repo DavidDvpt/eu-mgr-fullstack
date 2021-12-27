@@ -7,7 +7,7 @@ import Router from 'koa-router';
 const app = new Koa();
 const router = new Router();
 
-router.get('/', async (ctx, next)=> {
+router.get('/api', async (ctx, next)=> {
     ctx.body = {msg: "hello world ca fonctionne !!!!!!"}
 
     await next()
