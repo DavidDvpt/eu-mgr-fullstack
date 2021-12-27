@@ -1,15 +1,18 @@
 version: "3"
 services:
-  postgres:
+  db:
     container_name: postgres
+    restart: always
     image: "postgres:latest"
     environment:
-      - POSTGRES_USER=david_dev
-      - POSTGRES_PASSWORD=postgres_pwd_dev
+      POSTGRES_USER: david_dev
+      POSTGRES_PASSWORD: david_pwd_dev
     volumes:
-      - ./db:/var/lib/postgresql*
+      - ./db:/var/lib/postgresql
   adminer:
     image: adminer
+    depends_on: 
+      - db
     restart: always
     ports:
       - 8080:8080
@@ -32,11 +35,11 @@ services:
     volumes:
       - ./server:/app
     environment:
-      - POSTGRES_USER=david_dev
-      - PGHOST=postgres
-      - PGDATABASE=db_dev
-      - PGPASSWORD=postgres_pwd_dev
-      - PGPORT=5432
+      POSTGRES_USER: david_dev
+      POSTGRES_PASSWORD: david_pwd_dev
+      PGHOST: db
+      PGDATABASE: db_dev
+      PGPORT: 5432
   client:
     container_name: client
     stdin_open: true
