@@ -8,7 +8,7 @@ const app = new Koa();
 const router = new Router();
 
 router.get('/api', async (ctx, next)=> {
-    ctx.body = {msg: "hello world ca fonctionne !!!!!!"}
+    ctx.body = {msg: "hello world ca fonctionne même en mode dev !!!!!!"}
 
     await next()
 })

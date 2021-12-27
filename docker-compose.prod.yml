@@ -4,7 +4,8 @@ services:
     container_name: postgres
     image: "postgres:latest"
     environment:
-      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_USER=david_prod
+      - POSTGRES_PASSWORD=postgres_pwd_prod
     volumes:
       - ./db:/var/lib/postgresql*
   nginx:
@@ -24,10 +25,10 @@ services:
       dockerfile: Dockerfile
       context: "./server"
     environment:
-      - PGUSER=postgres
+      - POSTGRES_USER=david_prod
+      - POSTGRES_PASSWORD=postgres_pwd_prod
       - PGHOST=postgres
       - PGDATABASE=db_prod
-      - PGPASSWORD=postgres_password
       - PGPORT=5432
   client:
     container_name: client

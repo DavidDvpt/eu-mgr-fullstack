@@ -4,13 +4,13 @@ services:
     container_name: postgres
     image: "postgres:latest"
     environment:
-      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_USER=david_dev
+      - POSTGRES_PASSWORD=postgres_pwd_dev
     volumes:
       - ./db:/var/lib/postgresql*
   adminer:
     image: adminer
     restart: always
-    depends_on: postgres
     ports:
       - 8080:8080
   nginx:
@@ -32,10 +32,10 @@ services:
     volumes:
       - ./server:/app
     environment:
-      - PGUSER=postgres
+      - POSTGRES_USER=david_dev
       - PGHOST=postgres
       - PGDATABASE=db_dev
-      - PGPASSWORD=postgres_password
+      - PGPASSWORD=postgres_pwd_dev
       - PGPORT=5432
   client:
     container_name: client
