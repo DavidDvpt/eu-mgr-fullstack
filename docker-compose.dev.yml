@@ -7,6 +7,7 @@ services:
     environment:
       POSTGRES_USER: david_dev
       POSTGRES_PASSWORD: david_pwd_dev
+      POSTGRES_DB: db_dev
     volumes:
       - ./db:/var/lib/postgresql
   adminer:
@@ -38,7 +39,7 @@ services:
       POSTGRES_USER: david_dev
       POSTGRES_PASSWORD: david_pwd_dev
       PGHOST: db
-      PGDATABASE: db_dev
+      POSTGRES_DB: db_dev
       PGPORT: 5432
   client:
     container_name: client

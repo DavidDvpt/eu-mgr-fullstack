@@ -1,13 +1,15 @@
 version: "3"
 services:
-  postgres:
+  db:
     container_name: postgres
     image: "postgres:latest"
     environment:
-      - POSTGRES_USER=david_prod
-      - POSTGRES_PASSWORD=postgres_pwd_prod
+      POSTGRES_USER: david_prod
+      POSTGRES_PASSWORD: david_pwd_prod
+      POSTGRES_DB: db_prod
     volumes:
       - ./db:/var/lib/postgresql*
+
   nginx:
     container_name: nginx
     depends_on:
@@ -19,17 +21,19 @@ services:
       context: ./nginx
     ports:
       - "80:80"
+
   api:
     container_name: api
     build:
       dockerfile: Dockerfile
       context: "./server"
     environment:
-      - POSTGRES_USER=david_prod
-      - POSTGRES_PASSWORD=postgres_pwd_prod
-      - PGHOST=postgres
-      - PGDATABASE=db_prod
-      - PGPORT=5432
+      POSTGRES_USER: david_prod
+      POSTGRES_PASSWORD: david_pwd_prod
+      PGHOST: db
+      POSTGRES_DB: db_prod
+      PGPORT: 5432
+      
   client:
     container_name: client
     stdin_open: true
