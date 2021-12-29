@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
+    "predev": "npx prisma generate && npx prisma migrate dev --name init",
     "dev": "nodemon",
     "start": "node dist/server.ts",
     "build": "tsc",

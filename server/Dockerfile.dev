@@ -1,6 +1,7 @@
 FROM node:16.13-alpine3.12
 
-WORKDIR /app
 RUN npx prisma
+
+WORKDIR /app
 
 CMD ["npm", "run", "dev"]
