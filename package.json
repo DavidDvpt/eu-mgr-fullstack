@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "docker run api docker run -tid --name api-dev -p 8000:8000 -v /home/david/workspace/eu-mgr-fullstack/server:/app api",
   "main": "index.js",
-  "scripts": {    "start": "docker-compose up",
-    "build": "docker-compose build",
-    "stop": "docker-compose down",
+  "scripts": {    
+    "buildDev": "docker-compose -f docker-compose.dev.yml build",
+    "startDev": "docker-compose -f docker-compose.dev.yml up",
+    "stopDev": "docker-compose -f docker-compose.dev.yml down",
     "clean": "npm run clean:images && npm run clean:volumes",
     "clean:images": "docker system prune -af",
     "clean:volumes": "docker volume prune -f"

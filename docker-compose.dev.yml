@@ -7,9 +7,9 @@ services:
     environment:
       POSTGRES_USER: david_dev
       POSTGRES_PASSWORD: david_pwd_dev
-      POSTGRES_DB: db_dev
-    volumes:
-      - ./db:/var/lib/postgresql
+    # volumes:
+    #   - ./db:/var/lib/postgresql
+  
   adminer:
     image: adminer
     depends_on: 
@@ -17,6 +17,7 @@ services:
     restart: always
     ports:
       - 8080:8080
+  
   nginx:
     container_name: nginx
     depends_on:
@@ -28,19 +29,17 @@ services:
       context: ./nginx
     ports:
       - "3050:80"
+  
   api:
     container_name: api
     build:
       dockerfile: Dockerfile.dev
       context: "./server"
+    depends_on: 
+      - db
     volumes:
       - ./server:/app
-    environment:
-      POSTGRES_USER: david_dev
-      POSTGRES_PASSWORD: david_pwd_dev
-      PGHOST: db
-      POSTGRES_DB: db_dev
-      PGPORT: 5432
+
   client:
     container_name: client
     stdin_open: true
