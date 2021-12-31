@@ -10,20 +10,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  types     Type[]
 }
 
-model Post {
+model Type {
+  id         Int       @id @default(autoincrement())
+  name       String    @unique
+  createdAt  DateTime  @default(now())
+  isActive   Boolean   @default(true)
+  title      String
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  Item       Item[]
+}
+
+model Item {
   id        Int      @id @default(autoincrement())
+  name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  published Boolean
-  title     String
-  content   String?
-  author    User? @relation(fields: [authorId], references: [id])
-  authorId  Int   
+  isActive  Boolean  @default(true)
+  ttPrice   Decimal  @default(0)
+  decay     Decimal  @default(0)
+  type      Type?    @relation(fields: [typeId], references: [id])
+  typeId    Int
 }

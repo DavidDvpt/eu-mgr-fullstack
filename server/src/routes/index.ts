@@ -4,14 +4,8 @@ import auth from './auth';
 const router = new Router();
 
 
-router.get('/', async (ctx, next)=> {
-    ctx.body = {msg: "hello world ca fnne même en  !!!!!!"}
-
-    await next()
-})
-
-router.get('/test', async (ctx, next)=> {
-    ctx.body = {msg: "test  !!!!!!"}
+router.get('/api', async (ctx, next)=> {
+    ctx.body = {msg: "hello world ca fonctionne  !!!!!!"}
 
     await next()
 })
