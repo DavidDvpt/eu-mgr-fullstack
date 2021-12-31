@@ -1,13 +1,11 @@
 import Router from "koa-router";
-import prisma from "../../prismaClient";
 import auth from "./auth";
 import category from "./category";
 
 const router = new Router();
 
 router.get("/api", async (ctx, next) => {
-  const categories = await prisma.category.findMany();
-  ctx.body = { categories };
+  ctx.body = "l'api fonctionne !!!!!!!";
 
   await next();
 });

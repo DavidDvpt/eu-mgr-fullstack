@@ -1,10 +1,13 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "predev": "npx prisma generate && npx prisma migrate dev --name init",
+    "predev": "npx prisma migrate reset --force",
     "dev": "nodemon",
     "prestart": "npx prisma migrate deploy",
     "start": "node dist/server.js",
