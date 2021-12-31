@@ -6,9 +6,8 @@ services:
     environment:
       POSTGRES_USER: david_prod
       POSTGRES_PASSWORD: david_pwd_prod
-      POSTGRES_DB: db_prod
     volumes:
-      - ./db:/var/lib/postgresql*
+      - ./dbData:/var/lib/postgresql
 
   nginx:
     container_name: nginx
@@ -24,16 +23,20 @@ services:
 
   api:
     container_name: api
+    stdin_open: true
     build:
       dockerfile: Dockerfile
       context: "./server"
+    depends_on: 
+      - db
+    links:
+      - db
     environment:
-      POSTGRES_USER: david_prod
-      POSTGRES_PASSWORD: david_pwd_prod
-      PGHOST: db
-      POSTGRES_DB: db_prod
-      PGPORT: 5432
-      
+      DATABASE_URL: "postgresql://david_prod:david_pwd_prod@db:5432/db_dev?schema=public"
+    volumes:
+      - /app/node_modules
+      - /app/prisma
+
   client:
     container_name: client
     stdin_open: true
@@ -42,3 +45,9 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./client
+    volumes:
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  db:

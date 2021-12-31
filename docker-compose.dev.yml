@@ -1,7 +1,7 @@
 version: "3"
 services:
   db:
-    container_name: postgres
+    container_name: postgres_dev
     restart: always
     image: "postgres:latest"
     environment:
@@ -35,18 +35,20 @@ services:
       - "3050:80"
   
   api:
-    container_name: api
+    container_name: api_dev
     stdin_open: true
     build:
       dockerfile: Dockerfile.dev
       context: "./server"
     depends_on: 
       - db
+    links:
+      - db
     volumes:
       - ./server:/app
 
   client:
-    container_name: client
+    container_name: client_dev
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true

@@ -7,11 +7,13 @@
     "buildDev": "docker-compose -f docker-compose.dev.yml build",
     "startDev": "docker-compose -f docker-compose.dev.yml up",
     "stopDev": "docker-compose -f docker-compose.dev.yml down",
+    "stopProd": "docker-compose -f docker-compose.prod.yml down",
+    "buildProd": "docker-compose -f docker-compose.prod.yml build",
+    "startProd": "docker-compose -f docker-compose.prod.yml up -d",
     "clean": "npm run clean:images && npm run clean:volumes",
     "clean:images": "docker system prune -af",
-    "clean:volumes": "docker volume prune -f",
-    "prismaStudio": "docker-compose exec -ti api npx prisma studio"
-
+    "clean:containers": "docker rm $(docker ps -a -f status=exited -q)",
+    "clean:volumes": "docker volume prune -f"
    },
   "repository": {
     "type": "git",
