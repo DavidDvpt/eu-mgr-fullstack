@@ -1,0 +1,11 @@
+FROM node:16.13-alpine3.12
+
+RUN npm install -g prisma
+
+WORKDIR /app
+
+COPY . ./prisma
+
+RUN prisma generate
+
+CMD ["prisma", "studio"]
