@@ -2,7 +2,7 @@ import prismaClient from '../prismaClient'
 import seedCategories from './seed/seedCategories'
 import seedTypes from './seed/seedTypes'
 
-const error = (err) => {
+const error = (err: any): void => {
     console.error(err)
     process.exit(1)
 }
