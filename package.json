@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "docker run api docker run -tid --name api-dev -p 8000:8000 -v /home/david/workspace/eu-mgr-fullstack/server:/app api",
   "main": "index.js",
-  "scripts": {    
+  "scripts": {
     "buildDev": "docker-compose -f docker-compose.dev.yml build",
     "startDev": "docker-compose -f docker-compose.dev.yml up",
     "stopDev": "docker-compose -f docker-compose.dev.yml down",
@@ -13,8 +13,9 @@
     "clean": "npm run clean:images && npm run clean:volumes",
     "clean:images": "docker system prune -af",
     "clean:containers": "docker rm $(docker ps -a -f status=exited -q)",
-    "clean:volumes": "docker volume prune -f"
-   },
+    "clean:volumes": "docker volume prune -f",
+    "migrate:dev": "docker exec -ti api npx migrate dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DavidDvpt/eu-mgr-fullstack.git"

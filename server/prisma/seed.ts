@@ -1,3 +1,6 @@
-import seedCategory from "./seed/seedCategories";
+import seedCategories from "./seed/seedCategories";
+import seedTypes from "./seed/seedTypes";
 
-seedCategory();
+// ajouter des promises pour executer les fonctions dans l'ordre
+seedCategories();
+seedTypes();

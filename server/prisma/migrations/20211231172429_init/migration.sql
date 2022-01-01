@@ -14,7 +14,6 @@ CREATE TABLE "Type" (
     "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
-    "title" TEXT NOT NULL,
     "categoryId" INTEGER NOT NULL,
 
     CONSTRAINT "Type_pkey" PRIMARY KEY ("id")

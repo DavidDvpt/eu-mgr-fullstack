@@ -23,7 +23,6 @@ model Type {
   name       String    @unique
   createdAt  DateTime  @default(now())
   isActive   Boolean   @default(true)
-  title      String
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int
   Item       Item[]
@@ -37,6 +36,8 @@ model Item {
   isActive  Boolean  @default(true)
   ttPrice   Decimal  @default(0)
   decay     Decimal  @default(0)
+  source    String?
+  foundOn   String?
   type      Type?    @relation(fields: [typeId], references: [id])
   typeId    Int
 }

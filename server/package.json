@@ -7,7 +7,11 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "predev": "npx prisma migrate reset --force",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate_init": "npx prisma migrate dev --name init",
+    "prisma:reset": "npx prisma migrate reset --force",
+    "prisma:studio": "npx prisma studio",
+    "predev": "npm run prisma:generate && npm run prisma:migrate_init && npm run prisma:reset",
     "dev": "nodemon",
     "prestart": "npx prisma migrate deploy",
     "start": "node dist/server.js",

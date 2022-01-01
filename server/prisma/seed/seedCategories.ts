@@ -16,13 +16,13 @@ const data = [
 ];
 
 async function seed() {
-  const categories = await prismaClient.category.createMany({
+  const result = await prismaClient.category.createMany({
     data,
   });
-  console.log("seed", categories);
+  console.log("seed Categories", result);
 }
 
-export default function seedCategory() {
+export default function seedCategories() {
   seed()
     .catch((e) => {
       console.error(e);

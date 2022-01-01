@@ -5,23 +5,15 @@ services:
     restart: always
     image: "postgres:latest"
     environment:
-      POSTGRES_USER: david_dev
-      POSTGRES_PASSWORD: david_pwd_dev
-  
-  prisma:
-    links:
-      - db
-    depends_on:
-      - db
-    container_name: prisma
+      POSTGRES_USER: david
+      POSTGRES_PASSWORD: david_pwd
+
+  adminer:
+    image: adminer
+    restart: always
     ports:
-      - '5555:5555'
-    environment:
-      DATABASE_URL: "postgresql://david_dev:david_pwd_dev@db:5432/db_dev?schema=public"
-    build:
-      context: server/prisma
-      dockerfile: Dockerfile.dev
-  
+      - 8080:8080
+
   nginx:
     container_name: nginx
     depends_on:
@@ -33,14 +25,14 @@ services:
       context: ./nginx
     ports:
       - "3050:80"
-  
+
   api:
     container_name: api_dev
     stdin_open: true
     build:
       dockerfile: Dockerfile.dev
       context: "./server"
-    depends_on: 
+    depends_on:
       - db
     links:
       - db
