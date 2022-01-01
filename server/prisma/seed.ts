@@ -1,6 +1,26 @@
-import seedCategories from "./seed/seedCategories";
-import seedTypes from "./seed/seedTypes";
+import prismaClient from '../prismaClient'
+import seedCategories from './seed/seedCategories'
+import seedTypes from './seed/seedTypes'
 
-// ajouter des promises pour executer les fonctions dans l'ordre
-seedCategories();
-seedTypes();
+const error = (err) => {
+    console.error(err)
+    process.exit(1)
+}
+
+seedCategories()
+    .then((resultCat) => {
+        console.log('seed Categories', resultCat)
+        seedTypes()
+            .then((resultType) => {
+                console.log('seed Types', resultType)
+            })
+            .catch((e) => {
+                error(e)
+            })
+    })
+    .catch((e) => {
+        error(e)
+    })
+    .finally(async () => {
+        await prismaClient.$disconnect()
+    })

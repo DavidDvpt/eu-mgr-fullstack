@@ -1,34 +1,22 @@
-import prismaClient from "../../prismaClient";
+import prismaClient from '../../prismaClient'
 
 const data = [
-  {
-    id: 1,
-    name: "Tool",
-  },
-  {
-    id: 2,
-    name: "Ressource",
-  },
-  {
-    id: 3,
-    name: "Accessoire",
-  },
-];
-
-async function seed() {
-  const result = await prismaClient.category.createMany({
-    data,
-  });
-  console.log("seed Categories", result);
-}
+    {
+        id: 1,
+        name: 'Tool',
+    },
+    {
+        id: 2,
+        name: 'Ressource',
+    },
+    {
+        id: 3,
+        name: 'Accessoire',
+    },
+]
 
 export default function seedCategories() {
-  seed()
-    .catch((e) => {
-      console.error(e);
-      process.exit(1);
+    return prismaClient.category.createMany({
+        data,
     })
-    .finally(async () => {
-      await prismaClient.$disconnect();
-    });
 }
