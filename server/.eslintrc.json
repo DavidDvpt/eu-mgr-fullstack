@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["airbnb-base", "plugin:import/recommended", "plugin:prettier/recommended"],
+  "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended", "plugin:import/recommended", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
@@ -20,10 +20,10 @@
       }
     }
 },
-  "rules": {
+  "rules": {    
      "import/extensions":  ["error","always",{
-  "ts": "never", "js":"never", "ignorePackage": true
-  }],
+        "ts": "never", "js":"never", "ignorePackage": true
+        }],
     "prettier/prettier": [
       "error",
       {
