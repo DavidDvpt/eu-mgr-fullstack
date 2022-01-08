@@ -184,7 +184,7 @@ seedCategories()
                     }
                 )
 
-                seedResources('UnefinedTreasure', 6).then(
+                seedResources('UnrefinedTreasure', 6).then(
                     (unrefinedTreasure) => {
                         console.log(
                             'seed unrefinedTreasure',
