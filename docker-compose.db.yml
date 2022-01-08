@@ -1,13 +1,16 @@
 services:
 
   db:
-    image: postgres
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - 5432:5432
+      - 3306:3306
     environment:
-      POSTGRES_USER: dev
-      POSTGRES_PASSWORD: dev
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_dev
 
   adminer:
     image: adminer
