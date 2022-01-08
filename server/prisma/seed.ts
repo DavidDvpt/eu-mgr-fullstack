@@ -109,6 +109,9 @@ seedCategories()
                     }
                 )
 
+                // *******************************************
+                // ** REFINED RESOURCES
+                // *******************************************
                 seedResources('RefinedOre', 8).then(
                     (refinedOre) => {
                         console.log('seed refinedOre', refinedOre.length)
@@ -144,6 +147,51 @@ seedCategories()
                         )
                         return prismaClient.item.createMany({
                             data: refinedTreasure,
+                        })
+                    },
+                    (e) => {
+                        error(e)
+                    }
+                )
+
+                // *******************************************
+                // ** UNREFINED RESOURCES
+                // *******************************************
+                seedResources('UnrefinedOre', 5).then(
+                    (unrefinedOre) => {
+                        console.log('seed unrefinedOre', unrefinedOre.length)
+                        return prismaClient.item.createMany({
+                            data: unrefinedOre,
+                        })
+                    },
+                    (e) => {
+                        error(e)
+                    }
+                )
+
+                seedResources('UnrefinedEnmatter', 4).then(
+                    (unrefinedEnmatter) => {
+                        console.log(
+                            'seed unrefinedEnmatter',
+                            unrefinedEnmatter.length
+                        )
+                        return prismaClient.item.createMany({
+                            data: unrefinedEnmatter,
+                        })
+                    },
+                    (e) => {
+                        error(e)
+                    }
+                )
+
+                seedResources('UnefinedTreasure', 6).then(
+                    (unrefinedTreasure) => {
+                        console.log(
+                            'seed unrefinedTreasure',
+                            unrefinedTreasure.length
+                        )
+                        return prismaClient.item.createMany({
+                            data: unrefinedTreasure,
                         })
                     },
                     (e) => {
