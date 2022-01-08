@@ -11,6 +11,19 @@ category.get('/', async (ctx, next) => {
     await next()
 })
 
+category.get('/:id', async (ctx, next) => {
+    const { id } = ctx.params
+    const categories = await prismaClient.category.findUnique({
+        where: {
+            id: parseInt(id, 10),
+        },
+    })
+    ctx.body = categories
+    ctx.status = 200
+
+    await next()
+})
+
 category.post('/', async (ctx, next) => {
     const { body } = ctx.request
 
@@ -42,9 +55,12 @@ category.put('/:id', async (ctx, next) => {
 category.delete('/:id', async (ctx, next) => {
     const { id } = ctx.params
 
-    const newCategory = await prismaClient.category.delete({
+    const newCategory = await prismaClient.category.update({
         where: {
             id: parseInt(id, 10),
+        },
+        data: {
+            isActive: false,
         },
     })
 
