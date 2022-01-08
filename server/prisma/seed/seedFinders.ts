@@ -2,7 +2,20 @@ import * as csv from '@fast-csv/parse'
 import * as fs from 'fs'
 import * as path from 'path'
 
-const file = path.join(process.cwd(), 'prisma/csvDatas')
+interface IItem {
+    id?: number
+    name: string
+    createdAt?: string
+    updatedAt?: string
+    isActive: boolean
+    ttPrice?: number
+    decay?: number
+    source?: string
+    foundOn?: string
+    typeId: number
+}
+
+const file = path.join(process.cwd(), 'prisma/csvDatas/Finder.csv')
 
 export default function seedFinders() {
     const finders: IItem[] = []

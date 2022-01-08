@@ -15,7 +15,10 @@ seedCategories()
             .then((resultType) => {
                 console.log('seed Types', resultType)
                 seedFinders()
-                    .then((resultFinders) => {
+                    .then((resultFinders: any) => {
+                        return prismaClient.item.createMany({
+                            resultFinders,
+                        })
                         console.log('seed Types', resultFinders)
                     })
                     .catch((e) => {
