@@ -1,23 +1,23 @@
-Name;Decay;Max.TT;Source
-Chikara Refiner, Adjusted;0.015;24;Event
-Chikara Refiner, Modified;0.013;41;Event
-Chikara Refiner MR200;0.023;16;Old time
-Chikara Refiner MR300;0.022;35;Old time
-Chikara Refiner MR400;0.02;48;Old time
-Demonic Refiner MK-I (L);0.03;2;Crafted
-Genesis Rookie OreRefiner (L);0.11;0.01;Mission
-Genesis Star Basic Refiner;0.031;2;Calypso TT
-Imperium Resource Refiner 1A;0.03;3;Old TT Cyrene
-Imperium Resource Refiner B1;0.022;6;Crafted
-Initiate's Refiner;0.031;2;Cyrene TT
-NI Basic Refiner;0.031;2;Next Island TT
-NI Refiner New Settler Issue;0.031;1;Mission
-PTech Refiner 1;0.03;2;Old TT Arkadia
-PTech Refiner TT;0.031;2;Arkadia TT
-Punk Blender;0.031;2;Rocktropia TT
-Refiner MR100;0.031;2;Old TT, Webshop
-Transformer T-101;0.03;8;Crafted
-Transformer T-102;0.028;22.75;Crafted
-Transformer T-103;0.026;45.5;Crafted
-Transformer T-104;0.023;55.3;Crafted
-Transformer T-105;0.021;75;Crafted
+Name;Decay;Max.TT;Source;,foundOn
+Chikara Refiner, Adjusted;0.015;24;Event;;
+Chikara Refiner, Modified;0.013;41;Event;;
+Chikara Refiner MR200;0.023;16;Old time;;
+Chikara Refiner MR300;0.022;35;Old time;;
+Chikara Refiner MR400;0.02;48;Old time;;
+Demonic Refiner MK-I (L);0.03;2;Crafted;;
+Genesis Rookie OreRefiner (L);0.11;0.01;Mission;;
+Genesis Star Basic Refiner;0.031;2;Calypso TT;;
+Imperium Resource Refiner 1A;0.03;3;Old TT Cyrene;;
+Imperium Resource Refiner B1;0.022;6;Crafted;;
+Initiate's Refiner;0.031;2;Cyrene TT;;
+NI Basic Refiner;0.031;2;Next Island TT;;
+NI Refiner New Settler Issue;0.031;1;Mission;;
+PTech Refiner 1;0.03;2;Old TT Arkadia;;
+PTech Refiner TT;0.031;2;Arkadia TT;;
+Punk Blender;0.031;2;Rocktropia TT;;
+Refiner MR100;0.031;2;Old TT, Webshop;;
+Transformer T-101;0.03;8;Crafted;;
+Transformer T-102;0.028;22.75;Crafted;;
+Transformer T-103;0.026;45.5;Crafted;;
+Transformer T-104;0.023;55.3;Crafted;;
+Transformer T-105;0.021;75;Crafted;;

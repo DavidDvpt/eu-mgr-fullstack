@@ -48,7 +48,7 @@ const data = [
     },
     {
         id: 10,
-        name: 'Mining Amplifier',
+        name: 'Finder Amplifier',
         categoryId: 3,
     },
     {

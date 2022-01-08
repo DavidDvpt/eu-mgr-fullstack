@@ -2,7 +2,7 @@ import * as csv from '@fast-csv/parse'
 import * as fs from 'fs'
 import * as path from 'path'
 
-interface IItem {
+export interface IItem {
     id?: number
     name: string
     createdAt?: string
@@ -10,16 +10,18 @@ interface IItem {
     isActive: boolean
     ttPrice?: number
     decay?: number
-    source?: string
-    foundOn?: string
+    source?: string | null
+    foundOn?: string | null
     typeId: number
 }
 
-const file = path.join(process.cwd(), 'prisma/csvDatas/Finder.csv')
-
-export default function seedFinders() {
-    const finders: IItem[] = []
-    return new Promise((resolve, reject) => {
+export default function seedResources(
+    resourceName: string,
+    typeId: number | null
+): Promise<IItem[]> {
+    const file = path.join(process.cwd(), `prisma/csvDatas/${resourceName}.csv`)
+    const items: IItem[] = []
+    return new Promise<IItem[]>((resolve, reject) => {
         fs.createReadStream(file)
             .pipe(csv.parse({ headers: true }))
             .on('error', (error) => {
@@ -27,22 +29,20 @@ export default function seedFinders() {
                 reject(error)
             })
             .on('data', (row) => {
-                const { source, foundOn, name } = row
                 const temp: IItem = {
-                    name,
-                    decay: row.decay ?? 0,
-                    ttPrice: row.maxTT ?? 0,
-                    source,
-                    foundOn,
+                    name: row.name,
+                    decay: 0,
+                    ttPrice: row.maxTT === ' ' ? 0 : parseFloat(row.maxTT),
+                    source: null,
+                    foundOn: null,
                     isActive: true,
-                    typeId: 1,
+                    typeId: parseInt(row.typeId, 10),
                 }
-                finders.push(temp)
-                console.log(row, finders)
+                items.push(temp)
             })
             .on('end', (rowCount: number) => {
                 console.log(`Parsed ${rowCount} rows`)
-                resolve(finders)
+                resolve(items)
             })
     })
 }
