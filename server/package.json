@@ -25,6 +25,7 @@
   "dependencies": {
     "@fast-csv/parse": "^4.3.6",
     "@prisma/client": "^3.7.0",
+    "@types/lodash": "^4.14.178",
     "dotenv": "^10.0.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
@@ -32,6 +33,7 @@
     "koa-logger": "^3.2.1",
     "koa-router": "^10.1.1",
     "koa2-cors": "^2.0.6",
+    "lodash": "^4.17.21",
     "nodemon": "^2.0.15",
     "prisma": "^3.7.0",
     "ts-node": "^10.4.0",

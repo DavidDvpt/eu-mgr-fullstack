@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
+  id        String   @id
   name      String   @unique
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
@@ -19,25 +19,27 @@ model Category {
 }
 
 model Type {
-  id         Int       @id @default(autoincrement())
+  id         String    @id
   name       String    @unique
   createdAt  DateTime  @default(now())
   isActive   Boolean   @default(true)
   category   Category? @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  categoryId String
   Item       Item[]
 }
 
 model Item {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isActive  Boolean  @default(true)
-  ttPrice   Decimal  @default(0)
-  decay     Decimal  @default(0)
-  source    String?
-  foundOn   String?
-  type      Type?    @relation(fields: [typeId], references: [id])
-  typeId    Int
+  id               String   @id
+  name             String   @unique
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  isActive         Boolean  @default(true)
+  ttPrice          Decimal  @default(0) @db.Decimal(10, 5)
+  decay            Decimal  @default(0) @db.Decimal(10, 5)
+  source           String?
+  foundOn          String?
+  type             Type?    @relation(fields: [typeId], references: [id])
+  typeId           String
+  entropediaItemId Int?
+  entropediaImgId  Int?
 }
